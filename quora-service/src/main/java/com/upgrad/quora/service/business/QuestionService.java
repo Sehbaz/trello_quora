@@ -1,6 +1,7 @@
 package com.upgrad.quora.service.business;
 
 import com.upgrad.quora.service.dao.QuestionDao;
+
 import com.upgrad.quora.service.dao.UserDao;
 import com.upgrad.quora.service.entity.Question;
 import com.upgrad.quora.service.entity.UserAuthEntity;
@@ -14,6 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+
+import com.upgrad.quora.service.entity.Question;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class QuestionService {
@@ -46,6 +53,11 @@ public class QuestionService {
             throw new AuthorizationFailedException("ATHR-002", "User is signed out");
         }
         throw new AuthorizationFailedException("USR-001", "User has not signed in");
+
+
+    @Transactional
+    public Question createQuestion(Question newQuestion) {
+        return questionDao.createQuestion(newQuestion);
 
     }
 }

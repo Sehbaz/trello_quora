@@ -22,4 +22,9 @@ public class QuestionDao {
         }
     }
 
+    public Question createQuestion(Question newQuestion) {
+        entityManager.persist(newQuestion);
+        return newQuestion;
+    }
+
 }
